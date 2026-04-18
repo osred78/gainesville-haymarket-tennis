@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Availability Calendar | TeamReach Tennis</title>
+    <style>
+        :root {
+            --clay: #d35400;
+            --grass: #27ae60;
+            --navy: #2c3e50;
+            --light: #f4f7f6;
+            --white: #ffffff;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: var(--light);
+            color: #333;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: auto;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        h1 { color: var(--navy); margin-bottom: 5px; }
+        .subtitle { color: #666; margin-bottom: 20px; }
+
+        .nav-link {
+            display: inline-block;
+            margin-bottom: 20px;
+            text-decoration: none;
+            color: var(--grass);
+            font-weight: bold;
+        }
+
+        /* Calendar Grid Styling */
+        .calendar-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 15px;
+        }
+
+        .day-column {
+            background: #ebeef0;
+            border-radius: 8px;
+            overflow: hidden;
+            border: 1px solid #ddd;
+        }
+
+        .day-header {
+            background: var(--navy);
+            color: white;
+            text-align: center;
+            padding: 10px;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .time-block {
+            background: var(--white);
+            margin: 8px;
+            padding: 10px;
+            border-radius: 6px;
+            border-left: 4px solid var(--grass);
+            min-height: 80px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+
+        .time-label {
+            display: block;
+            font-size: 0.75rem;
+            color: var(--clay);
+            font-weight: bold;
+            margin-bottom: 5px;
+            text-transform: uppercase;
+        }
+
+        .player-list {
+            font-size: 0.9rem;
+            line-height: 1.4;
+            color: #444;
+        }
+
+        .player-name {
+            display: inline-block;
+            background: #f0f0f0;
+            padding: 2px 6px;
+            margin: 2px;
+            border-radius: 4px;
+            font-size: 0.85rem;
+        }
+
+        .weekend {
+            border-top: 4px solid var(--clay);
+        }
+
+        @media (max-width: 768px) {
+            .calendar-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <a href="index.html" class="nav-link">&larr; Back to League Info</a>
+    
+    <header>
+        <h1>Match-Play Availability</h1>
+        <p class="subtitle">General availability for the Gainesville & Haymarket League</p>
+    </header>
+
+    <div class="calendar-grid">
+        
+        <div class="day-column">
+            <div class="day-header">Mon</div>
+            <div class="time-block">
+                <span class="time-label">Early Evening (5:30-7)</span>
+                <div class="player-list">
+<!--
+                    <span class="player-name">David</span>
+                    <span class="player-name">Chris</span>
+-->
+                </div>
+            </div>
+            <div class="time-block">
+                <span class="time-label">Late Evening (7-9:30)</span>
+                <div class="player-list">
+<!--
+                    <span class="player-name">Jacky</span>
+-->
+                </div>
+            </div>
+        </div>
+
+        <div class="day-column">
+            <div class="day-header">Tue</div>
+            <div class="time-block"><span class="time-label">Early Evening</span>
+                <div class="player-list">
+                    <span class="player-name">Chris</span>
+                </div>
+            </div>
+            <div class="time-block"><span class="time-label">Late Evening</span><div class="player-list"></div></div>
+        </div>
+
+        <div class="day-column">
+            <div class="day-header">Wed</div>
+            <div class="time-block"><span class="time-label">Early Evening</span>
+                <div class="player-list">
+                    <div class="player-list">
+                        <span class="player-name">Chris</span>
+                    </div>
+                </div>
+            </div>
+            <div class="time-block"><span class="time-label">Late Evening</span><div class="player-list"></div></div>
+        </div>
+
+        <div class="day-column">
+            <div class="day-header">Thu</div>
+            <div class="time-block"><span class="time-label">Early Evening</span>
+                <div class="player-list">
+                    <span class="player-name">Chris</span>
+                </div>
+            </div>
+            <div class="time-block"><span class="time-label">Late Evening</span><div class="player-list"></div></div>
+        </div>
+
+        <div class="day-column">
+            <div class="day-header">Fri</div>
+            <div class="time-block"><span class="time-label">Early Evening</span>
+                <div class="player-list">
+                    <span class="player-name">Chris (3-6)</span>
+                </div>
+            </div>
+            <div class="time-block"><span class="time-label">Late Evening</span><div class="player-list"></div></div>
+        </div>
+
+        <div class="day-column weekend">
+            <div class="day-header" style="background: var(--clay);">Sat</div>
+            <div class="time-block">
+                <span class="time-label">Early Morning (8-10)</span>
+                <div class="player-list">
+                    <span class="player-name">Chris (7:30-9:30)</span>
+                </div>
+            </div>
+            <div class="time-block">
+                <span class="time-label">Late Morning (10-12)</span>
+                <div class="player-list"></div>
+            </div>
+            <div class="time-block">
+                <span class="time-label">Afternoon (12-4)</span>
+                <div class="player-list"></div>
+            </div>
+            <div class="time-block">
+                <span class="time-label">Evening (4-Sunset)</span>
+                <div class="player-list">
+                    <span class="player-name">Chris</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="day-column weekend">
+            <div class="day-header" style="background: var(--clay);">Sun</div>
+            <div class="time-block">
+                <span class="time-label">Early Morning (8-10)</span>
+                <div class="player-list">
+                    <span class="player-name">Chris (sometimes)</span>
+                </div>
+            </div>
+            <div class="time-block">
+                <span class="time-label">Late Morning (10-12)</span>
+                <div class="player-list">
+                    <span class="player-name">Chris</span>
+                </div>
+            </div>
+            <div class="time-block">
+                <span class="time-label">Afternoon (12-4)</span>
+                <div class="player-list">
+                    <span class="player-name">Chris</span>
+                </div>
+            </div>
+            <div class="time-block">
+                <span class="time-label">Evening (4-Sunset)</span>
+                <div class="player-list"></div>
+            </div>
+        </div>
+
+    </div>
+
+    <footer style="text-align: center; margin-top: 40px; color: #7f8c8d; font-size: 0.8rem;">
+        Note: This is general preferred availability. Confirm specific match times via TeamReach.
+    </footer>
+</div>
+
+</body>
+</html>

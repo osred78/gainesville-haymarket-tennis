@@ -95,32 +95,67 @@
 
     <div class="container">
 
-        <div style="text-align: center; margin-bottom: 20px;">
-            <a href="leaderboard.html" class="leaderboard-btn">
-                🏆 View Live Leaderboard
-            </a>
-        </div>
-    
-        <style>
-            .leaderboard-btn {
-                display: inline-block;
-                background-color: var(--grass); /* Using the grass green for action */
-                color: white;
-                padding: 15px 30px;
-                text-decoration: none;
-                border-radius: 50px; /* Rounded pill shape */
-                font-weight: bold;
-                font-size: 1.1rem;
-                box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-                transition: transform 0.2s, background-color 0.2s;
+    <div class="button-group">
+        <a href="calendar.html" class="nav-btn availability-btn">
+            📅 View Availability
+        </a>
+        <a href="leaderboard.html" class="nav-btn leaderboard-btn">
+            🏆 View Live Leaderboard
+        </a>
+    </div>
+
+    <style>
+        .button-group {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 30px;
+            flex-wrap: wrap; /* Ensures buttons stack on mobile */
+        }
+
+        .nav-btn {
+            display: inline-block;
+            padding: 15px 25px;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: bold;
+            font-size: 1rem;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            transition: transform 0.2s, background-color 0.2s;
+            min-width: 200px;
+            text-align: center;
+        }
+
+        /* Availability Button - Navy Theme */
+        .availability-btn {
+            background-color: var(--navy);
+            color: white;
+        }
+
+        .availability-btn:hover {
+            background-color: #1a252f;
+            transform: translateY(-2px);
+            color: white;
+        }
+
+        /* Leaderboard Button - Grass Theme */
+        .leaderboard-btn {
+            background-color: var(--grass);
+            color: white;
+        }
+
+        .leaderboard-btn:hover {
+            background-color: #219150;
+            transform: translateY(-2px);
+            color: white;
+        }
+
+        @media (max-width: 480px) {
+            .nav-btn {
+                width: 100%; /* Full width buttons on small phones */
             }
-        
-            .leaderboard-btn:hover {
-                background-color: #219150;
-                transform: translateY(-2px);
-                color: white;
-            }
-        </style>
+        }
+    </style>
         
         <section>
             <h2>Introduction</h2>
