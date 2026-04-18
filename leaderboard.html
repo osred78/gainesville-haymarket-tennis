@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Leaderboard | TeamReach Doubles Tennis League</title>
+    <style>
+        :root {
+            --clay: #d35400;
+            --grass: #27ae60;
+            --navy: #2c3e50;
+            --light: #f4f7f6;
+            --gold: #f1c40f;
+        }
+
+        body {
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: var(--light);
+            color: #333;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: auto;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        h1 { color: var(--navy); margin-bottom: 5px; }
+        .update-tag { color: #7f8c8d; font-style: italic; font-size: 0.9rem; }
+
+        /* Leaderboard Table Styling */
+        .leaderboard-wrap {
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            overflow: hidden;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            text-align: left;
+        }
+
+        thead {
+            background-color: var(--navy);
+            color: white;
+        }
+
+        th, td {
+            padding: 18px;
+            border-bottom: 1px solid #eee;
+        }
+
+        tr:hover { background-color: #fcfcfc; }
+
+        .rank { width: 60px; font-weight: bold; text-align: center; }
+        .points { font-weight: bold; color: var(--clay); text-align: center; }
+        
+        .rank-1 { background-color: rgba(241, 196, 15, 0.1); }
+        .medal { font-size: 1.2rem; }
+
+        .nav-link {
+            display: inline-block;
+            margin-bottom: 20px;
+            text-decoration: none;
+            color: var(--grass);
+            font-weight: bold;
+        }
+
+        .active-bonus-badge {
+            background: var(--grass);
+            color: white;
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-size: 0.75rem;
+            margin-left: 10px;
+        }
+
+        @media (max-width: 600px) {
+            th:nth-child(4), td:nth-child(4) { display: none; } /* Hides "Matches" on small screens */
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <a href="index.html" class="nav-link">&larr; Back to League Info</a>
+        
+        <header>
+            <h1>League Leaderboard</h1>
+            <p>Gainesville & Haymarket • 2026 Season Standings</p>
+            <p class="update-tag">Last updated: April 17, 2026</p>
+        </header>
+
+        <div class="leaderboard-wrap">
+            <table>
+                <thead>
+                    <tr>
+                        <th class="rank">Rank</th>
+                        <th>Team Members</th>
+                        <th style="text-align:center;">Points</th>
+                        <th style="text-align:center;">Matches</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="rank-1">
+                        <td class="rank"><span class="medal">🥇</span> 1</td>
+                        <td><strong>Chris / David</strong></td>
+                        <td class="points">12</td>
+                        <td style="text-align:center;">1</td>
+                        <td><span class="active-bonus-badge">Top Form</span></td>
+                    </tr>
+                    <tr class="rank-1">
+                        <td class="rank"><span class="medal">🥈</span> 2</td>
+                        <td><strong>Chris / Roger</strong></td>
+                        <td class="points">12</td>
+                        <td style="text-align:center;">1</td>
+                        <td>--</td>
+                    </tr>
+                    <tr>
+                        <td class="rank">3</td>
+                        <td>Billy / Bobby</td>
+                        <td class="points">5</td>
+                        <td style="text-align:center;">1</td>
+                        <td>Active</td>
+                    </tr>
+                    <tr>
+                        <td class="rank">4</td>
+                        <td>Carlos / Iga</td>
+                        <td class="points">5</td>
+                        <td style="text-align:center;">1</td>
+                        <td>Active</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <p style="margin-top: 25px; font-size: 0.85rem; color: #7f8c8d; text-align: center;">
+            Scoring: Win (10), Loss (5), Shutout (+2), Active Bonus (+5 for 2 matches/week).<br>
+            Ties are broken by head-to-head results or match frequency.
+        </p>
+    </div>
+
+</body>
+</html>
