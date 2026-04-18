@@ -130,6 +130,127 @@
             Scoring: Win (10), Loss (5), Shutout (+2), Active Bonus (+5 for 2 matches/week).<br>
             Ties are broken by head-to-head results or match frequency.
         </p>
+
+        <section style="margin-top: 50px;">
+        <h2 style="text-align: center; color: var(--navy); border-bottom: 2px solid #eee; padding-bottom: 10px;">Recent Match Results</h2>
+<!--
+        <div class="results-container">
+            <div class="result-card">
+                <div class="result-date">Apr 15, 2026</div>
+                <div class="result-main">
+                    <div class="team-vs">
+                        <span class="team-name">David / Chris</span>
+                        <span class="vs">vs</span>
+                        <span class="team-name">Jacky / Bryce</span>
+                    </div>
+                    <div class="score-line">6-2, 6-4</div>
+                </div>
+                <div class="points-awarded">
+                    <span class="pts-win">+12 pts</span>
+                    <span class="pts-loss">+5 pts</span>
+                </div>
+            </div>
+
+            <div class="result-card">
+                <div class="result-date">Apr 12, 2026</div>
+                <div class="result-main">
+                    <div class="team-vs">
+                        <span class="team-name">Billy / Bobby</span>
+                        <span class="vs">vs</span>
+                        <span class="team-name">Carlos / Iga</span>
+                    </div>
+                    <div class="score-line">6-7, 6-3, [10-8]</div>
+                </div>
+                <div class="points-awarded">
+                    <span class="pts-win">+10 pts</span>
+                    <span class="pts-loss">+5 pts</span>
+                </div>
+            </div>
+        </div>
+-->
+    </section>
+
+    <style>
+        .results-container {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .result-card {
+            background: white;
+            border-radius: 8px;
+            padding: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+            border-left: 5px solid #bdc3c7;
+        }
+
+        .result-date {
+            font-size: 0.85rem;
+            color: #7f8c8d;
+            width: 100px;
+            font-weight: bold;
+        }
+
+        .result-main {
+            flex-grow: 1;
+            text-align: center;
+        }
+
+        .team-vs {
+            font-weight: bold;
+            color: var(--navy);
+            margin-bottom: 4px;
+        }
+
+        .vs {
+            font-weight: normal;
+            color: #95a5a6;
+            margin: 0 10px;
+            font-style: italic;
+        }
+
+        .score-line {
+            font-family: 'Courier New', Courier, monospace;
+            font-weight: bold;
+            color: var(--clay);
+            font-size: 1.1rem;
+        }
+
+        .points-awarded {
+            text-align: right;
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+        }
+
+        .pts-win {
+            color: var(--grass);
+            font-weight: bold;
+            font-size: 0.85rem;
+        }
+
+        .pts-loss {
+            color: #7f8c8d;
+            font-size: 0.85rem;
+        }
+
+        @media (max-width: 600px) {
+            .result-card {
+                flex-direction: column;
+                text-align: center;
+                gap: 10px;
+            }
+            .result-date, .points-awarded {
+                text-align: center;
+                width: 100%;
+            }
+        }
+    </style>
     </div>
 
 </body>
