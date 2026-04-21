@@ -110,6 +110,25 @@
                 grid-template-columns: 1fr;
             }
         }
+        
+        .update-btn {
+            display: inline-block;
+            background-color: var(--navy);
+            color: white;
+            padding: 12px 24px;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: bold;
+            font-size: 0.9rem;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            transition: transform 0.2s, background-color 0.2s;
+        }
+        
+        .update-btn:hover {
+            background-color: #1a252f;
+            transform: translateY(-2px);
+            color: white;
+        }
     </style>
 </head>
 <body>
@@ -121,6 +140,14 @@
         <h1>Match-Play Availability</h1>
         <p class="subtitle">General availability for the Gainesville & Haymarket League</p>
     </header>
+
+    <div style="text-align: center; margin-bottom: 30px;">
+        <a href="https://docs.google.com/forms/d/e/1FAIpQLScPFYl6Cg-VwyuDVEZfr9lCtHdC0bmRjqG1ZIjDsS9riSLuIw/viewform?usp=header" 
+           target="_blank" 
+           class="update-btn">
+            📝 Update Your Availability
+        </a>
+    </div>
 
     <div class="calendar-grid">
         
