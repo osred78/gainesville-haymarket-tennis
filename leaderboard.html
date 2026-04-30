@@ -3,250 +3,333 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Leaderboard | Gainesville-Haymarket Tennis</title>
-    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🎾</text></svg>">
+    <link rel="icon" type="image/png" href="favicon.png">
+    <title>Leaderboard | TeamReach Doubles Tennis League</title>
     <style>
         :root {
-            --navy: #2c3e50;
+            --clay: #d35400;
             --grass: #27ae60;
-            --clay: #e67e22;
-            --light-bg: #f8f9fa;
+            --navy: #2c3e50;
+            --light: #f4f7f6;
+            --gold: #f1c40f;
         }
 
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            line-height: 1.6;
-            color: #333;
-            background-color: var(--light-bg);
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
             margin: 0;
-            padding: 0;
-        }
-
-        header {
-            background-color: var(--navy);
-            color: white;
-            padding: 2rem 1rem;
-            text-align: center;
+            padding: 20px;
+            background-color: var(--light);
+            color: #333;
         }
 
         .container {
-            max-width: 800px;
-            margin: 20px auto;
-            padding: 20px;
-            background: white;
-            border-radius: 8px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            max-width: 900px;
+            margin: auto;
         }
 
-        h2 {
+        header {
             text-align: center;
-            color: var(--navy);
-            border-bottom: 2px solid #eee;
-            padding-bottom: 10px;
-            margin-top: 40px;
+            margin-bottom: 40px;
         }
 
-        /* Leaderboard Table */
-        .leaderboard-table {
+        h1 { color: var(--navy); margin-bottom: 5px; }
+        .update-tag { color: #7f8c8d; font-style: italic; font-size: 0.9rem; }
+
+        /* Leaderboard Table Styling */
+        .leaderboard-wrap {
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            overflow: hidden;
+        }
+
+        table {
             width: 100%;
             border-collapse: collapse;
-            margin: 20px 0;
-            font-size: 1rem;
-        }
-
-        .leaderboard-table th {
-            background-color: var(--navy);
-            color: white;
-            padding: 12px;
             text-align: left;
         }
 
-        .leaderboard-table td {
-            padding: 12px;
-            border-bottom: 1px solid #ddd;
-        }
-
-        .rank-1 { background-color: #fff9c4; font-weight: bold; }
-
-        /* Report Button */
-        .btn-container {
-            text-align: center;
-            margin: 30px 0;
-        }
-
-        .report-btn {
-            background-color: var(--clay);
+        thead {
+            background-color: var(--navy);
             color: white;
-            padding: 14px 30px;
-            text-decoration: none;
-            border-radius: 50px;
-            font-weight: bold;
+        }
+
+        th, td {
+            padding: 18px;
+            border-bottom: 1px solid #eee;
+        }
+
+        tr:hover { background-color: #fcfcfc; }
+
+        .rank { width: 60px; font-weight: bold; text-align: center; }
+        .points { font-weight: bold; color: var(--clay); text-align: center; }
+        
+        .rank-1 { background-color: rgba(241, 196, 15, 0.1); }
+        .medal { font-size: 1.2rem; }
+
+        .nav-link {
             display: inline-block;
-            transition: transform 0.2s, box-shadow 0.2s;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+            text-decoration: none;
+            color: var(--grass);
+            font-weight: bold;
         }
 
-        .report-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+        .active-bonus-badge {
+            background: var(--grass);
             color: white;
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-size: 0.75rem;
+            margin-left: 10px;
         }
-
-        /* Match Result Cards */
-        .result-card {
-            border: 1px solid #ddd;
-            border-left: 6px solid var(--grass);
-            padding: 15px;
-            margin-bottom: 15px;
-            border-radius: 6px;
-            background: #fff;
-        }
-
-        .dnf-card { border-left-color: #f1c40f; }
-
-        .result-date { font-size: 0.85rem; color: #7f8c8d; margin-bottom: 8px; font-weight: bold; }
-        .result-main { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; }
-        .team-names { font-weight: bold; color: var(--navy); font-size: 1.1rem; }
-        .score-line { font-style: italic; color: #555; background: #f0f0f0; padding: 2px 8px; border-radius: 4px; }
-        .pts-awarded { font-size: 0.85rem; color: #27ae60; font-weight: bold; margin-top: 5px; }
-
-        /* Rules & Bonus Note */
-        .rules-box {
-            background-color: #e8f4fd;
-            border-left: 4px solid #3498db;
-            padding: 20px;
-            margin-top: 40px;
-            border-radius: 0 6px 6px 0;
-        }
-
-        .rules-box h3 { margin-top: 0; color: #2980b9; font-size: 1.1rem; }
-        .rules-list { margin: 0; padding-left: 20px; font-size: 0.95rem; }
-
-        footer {
-            text-align: center;
-            margin-top: 50px;
-            padding: 30px;
-            border-top: 1px solid #ddd;
-            color: #666;
-            font-size: 0.9rem;
-        }
-
-        footer a { color: var(--navy); font-weight: bold; }
 
         @media (max-width: 600px) {
-            .result-main { flex-direction: column; align-items: flex-start; }
-            .score-line { margin-top: 10px; }
+            th:nth-child(4), td:nth-child(4) { display: none; } /* Hides "Matches" on small screens */
         }
     </style>
 </head>
 <body>
 
-<header>
-    <h1>League Leaderboard</h1>
-    <p>Gainesville / Haymarket Doubles Tennis</p>
-</header>
+    <div class="container">
+        <a href="index.html" class="nav-link">&larr; Back to League Info</a>
+        
+        <header>
+            <h1>League Leaderboard</h1>
+            <p>Gainesville & Haymarket • 2026 Season Standings</p>
+            <p class="update-tag">Last updated: April 29, 2026</p>
+        </header>
 
-<div class="container">
-    
-    <h2>Current Standings</h2>
-<table class="leaderboard-table">
-    <thead>
-        <tr>
-            <th>Rank</th>
-            <th>Team</th>
-            <th>Points</th>
-            <th>Record (W-L-DNF)</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr class="rank-1">
-            <td>1</td>
-            <td>David / Chris</td>
-            <td>20</td>
-            <td>2-0-0</td>
-        </tr>
-        <tr>
-            <td>2</td>
-            <td>Jacky / Bryce</td>
-            <td>10</td>
-            <td>0-2-0</td>
-        </tr>
-        <tr>
-            <td>3</td>
-            <td>Jacky / Justin</td>
-            <td>5</td>
-            <td>0-0-1</td>
-        </tr>
-        <tr>
-            <td>3</td>
-            <td>Nayan / Rishi</td>
-            <td>5</td>
-            <td>0-0-1</td>
-        </tr>
-    </tbody>
-</table>
-
-    <div class="btn-container">
-        <a href="https://docs.google.com/forms/d/e/1FAIpQLScPFYl6Cg-VwyuDVEZfr9lCtHdC0bmRjqG1ZIjDsS9riSLuIw/viewform?usp=header" target="_blank" class="report-btn">
-            🎾 Report a Match Score
-        </a>
-    </div>
-
-    <h2>Recent Match Results</h2>
-
-    <!-- Match Card 3 -->
-    <div class="result-card">
-        <div class="result-date">APRIL 28, 2026</div>
-        <div class="result-main">
-            <div class="team-names">David / Chris def. Jacky / Bryce</div>
-            <div class="score-line">7-6, 6-2</div>
+        <div style="text-align: center; margin: 30px 0;">
+            <a href="https://docs.google.com/forms/d/e/1FAIpQLScui__kTu-2e1seWFohlJ7jBjfO8X4MewhG58k8fAF6K3elyg/viewform?usp=header" target="_blank" 
+                style="background-color: var(--clay); color: white; padding: 12px 25px; text-decoration: none; border-radius: 50px; font-weight: bold; box-shadow: 0 4px 6px rgba(0,0,0,0.1);">
+                🎾 Report a Match Score
+            </a>
         </div>
-        <div class="pts-awarded">+10 pts / +5 pts</div>
-    </div>
 
-    <!-- Match Card 2 -->
-    <div class="result-card">
-        <div class="result-date">APRIL 24, 2026</div>
-        <div class="result-main">
-            <div class="team-names">David / Chris def. Jacky / Bryce</div>
-            <div class="score-line">6-4, 6-3</div>
+        <div class="leaderboard-wrap">
+            <table>
+                <thead>
+                    <tr>
+                        <th class="rank">Rank</th>
+                        <th>Team Members</th>
+                        <th style="text-align:center;">Points</th>
+                        <th style="text-align:center;">Record (W-L-DNF)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <td class="rank">1</td>
+                        <td><strong>David / Chris</strong></td>
+                        <td class="points" style="text-align:center;">20</td>
+                        <td style="text-align:center;">2-0-0</td>
+                    </tr>
+                    <td class="rank">2</td>
+                        <td><strong>Jacky / Bryce</strong></td>
+                        <td class="points" style="text-align:center;">10</td>
+                        <td style="text-align:center;">0-2-0</td>
+                    </tr>
+                    <tr>
+                        <td class="rank">3</td>
+                        <td><strong>Jacky / Justin</strong></td>
+                        <td class="points" style="text-align:center;">5</td>
+                        <td style="text-align:center;">0-0-1</td>
+                    </tr>
+                    <tr>
+                        <td class="rank">3</td>
+                        <td><strong>Nayan / Rishi</strong></td>
+                        <td class="points" style="text-align:center;">5</td>
+                        <td style="text-align:center;">0-0-1</td>
+                    </tr>
+                </tbody>
+            </table>
         </div>
-        <div class="pts-awarded">+10 pts / +5 pts</div>
-    </div>
 
-    <!-- Match Card 1 -->
-    <div class="result-card dnf-card">
-        <div class="result-date">APRIL 21, 2026</div>
-        <div class="result-main">
-            <div class="team-names">Jacky / Justin vs Nayan / Rishi</div>
-            <div class="score-line">6-3, 4-6 (DNF)</div>
-        </div>
-        <div class="pts-awarded" style="color: #856404;">+5 pts / +5 pts (DNF)</div>
-    </div>
-
-    <div class="rules-box">
-        <h3>League Rules & Scoring</h3>
-        <ul class="rules-list">
-            <li><strong>Win:</strong> +10 Points</li>
-            <li><strong>Loss:</strong> +5 Points</li>
-            <li><strong>DNF (Did Not Finish):</strong> +5 Points to both teams</li>
-            <li><strong>Bonus:</strong> +2 Points for a Straight-Set Shutout (6-0, 6-0)</li>
-        </ul>
-        <p style="margin-top: 15px; font-size: 0.9rem; border-top: 1px solid #b3d7f2; padding-top: 10px;">
-            <strong>💡 Bonus Note:</strong> Double Header bonuses (+5) are awarded to specific <strong>teams</strong> who play twice in a Sun-Sat window. Players competing with different partners do not qualify for a combined bonus.
+        <p style="margin-top: 25px; font-size: 0.85rem; color: #7f8c8d; text-align: center;">
+            Scoring: Win (10), Loss/DNF (5), Shutout (+2), Active Bonus (+5 for 2 matches/week).<br>
+            Ties are broken by head-to-head results or match frequency.
         </p>
+
+        <section style="margin-top: 50px;">
+        <h2 style="text-align: center; color: var(--navy); border-bottom: 2px solid #eee; padding-bottom: 10px;">Recent Match Results</h2>
+        <div class="results-container">
+            <div class="result-card">
+                <div class="result-date">Apr 28, 2026</div>
+                <div class="result-main">
+                    <div class="team-vs">
+                        <span class="team-name">David / Chris</span>
+                        <span class="vs">vs</span>
+                        <span class="team-name">Jacky / Bryce</span>
+                    </div>
+                    <div class="score-line">7-6, 6-2</div>
+                </div>
+                <div class="points-awarded">
+                    <span class="pts-loss">+10 pts</span>
+                    <span class="pts-loss">+5 pts</span>
+                </div>
+            </div>
+            <div class="result-card">
+                <div class="result-date">Apr 24, 2026</div>
+                <div class="result-main">
+                    <div class="team-vs">
+                        <span class="team-name">David / Chris</span>
+                        <span class="vs">vs</span>
+                        <span class="team-name">Jacky / Bryce</span>
+                    </div>
+                    <div class="score-line">6-4, 6-3</div>
+                </div>
+                <div class="points-awarded">
+                    <span class="pts-loss">+10 pts</span>
+                    <span class="pts-loss">+5 pts</span>
+                </div>
+            </div>
+            <div class="result-card">
+                <div class="result-date">Apr 21, 2026</div>
+                <div class="result-main">
+                    <div class="team-vs">
+                        <span class="team-name">Jacky / Justin</span>
+                        <span class="vs">vs</span>
+                        <span class="team-name">Nayan / Rishi</span>
+                    </div>
+                    <div class="score-line">6-3, 4-6, DNF</div>
+                </div>
+                <div class="points-awarded">
+                    <span class="pts-loss">+5 pts</span>
+                    <span class="pts-loss">+5 pts</span>
+                </div>
+            </div>
+<!--
+        <div class="results-container">
+            <div class="result-card">
+                <div class="result-date">Apr 15, 2026</div>
+                <div class="result-main">
+                    <div class="team-vs">
+                        <span class="team-name">David / Chris</span>
+                        <span class="vs">vs</span>
+                        <span class="team-name">Jacky / Bryce</span>
+                    </div>
+                    <div class="score-line">6-2, 6-4</div>
+                </div>
+                <div class="points-awarded">
+                    <span class="pts-win">+12 pts</span>
+                    <span class="pts-loss">+5 pts</span>
+                </div>
+            </div>
+
+            <div class="result-card">
+                <div class="result-date">Apr 12, 2026</div>
+                <div class="result-main">
+                    <div class="team-vs">
+                        <span class="team-name">Billy / Bobby</span>
+                        <span class="vs">vs</span>
+                        <span class="team-name">Carlos / Iga</span>
+                    </div>
+                    <div class="score-line">6-7, 6-3, [10-8]</div>
+                </div>
+                <div class="points-awarded">
+                    <span class="pts-win">+10 pts</span>
+                    <span class="pts-loss">+5 pts</span>
+                </div>
+            </div>
+        </div>
+-->
+    </section>
+
+    <style>
+        .results-container {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .result-card {
+            background: white;
+            border-radius: 8px;
+            padding: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+            border-left: 5px solid #bdc3c7;
+        }
+
+        .result-date {
+            font-size: 0.85rem;
+            color: #7f8c8d;
+            width: 100px;
+            font-weight: bold;
+        }
+
+        .result-main {
+            flex-grow: 1;
+            text-align: center;
+        }
+
+        .team-vs {
+            font-weight: bold;
+            color: var(--navy);
+            margin-bottom: 4px;
+        }
+
+        .vs {
+            font-weight: normal;
+            color: #95a5a6;
+            margin: 0 10px;
+            font-style: italic;
+        }
+
+        .score-line {
+            font-family: 'Courier New', Courier, monospace;
+            font-weight: bold;
+            color: var(--clay);
+            font-size: 1.1rem;
+        }
+
+        .points-awarded {
+            text-align: right;
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+        }
+
+        .pts-win {
+            color: var(--grass);
+            font-weight: bold;
+            font-size: 0.85rem;
+        }
+
+        .pts-loss {
+            color: #7f8c8d;
+            font-size: 0.85rem;
+        }
+
+        @media (max-width: 600px) {
+            .result-card {
+                flex-direction: column;
+                text-align: center;
+                gap: 10px;
+            }
+            .result-date, .points-awarded {
+                text-align: center;
+                width: 100%;
+            }
+        }
+    </style>
     </div>
 
-</div>
-
-<footer>
-    <p><strong>Ready to play? 
-        <a href="mailto:gainesville-tennis@outlook.com?subject=Joining the TeamReach League">
-           Contact gainesville-tennis@outlook.com
-        </a> 
-    to join via TeamReach</strong></p>
-    &copy; 2026 TeamReach Doubles Tennis League - Gainesville/Haymarket
-</footer>
+    <footer style="text-align: center; margin-top: 50px; padding: 20px; border-top: 1px solid #ddd; color: #666;">
+        <p style="margin-bottom: 10px;">
+            <strong>Ready to play? Contact
+                <a href="mailto:gainesville-tennis@outlook.com?subject=Joining the TeamReach League" 
+                   style="color: var(--navy); text-decoration: underline;">
+                   gainesville-tennis@outlook.com
+                </a> 
+            to join via TeamReach</strong>
+        </p>
+        <p style="font-size: 0.85rem;">
+            &copy; 2026 TeamReach Doubles Tennis League - Gainesville/Haymarket
+        </p>
+    </footer>
 
 </body>
 </html>
