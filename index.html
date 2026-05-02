@@ -101,6 +101,37 @@
             font-size: 0.9rem;
             opacity: 0.8;
         }
+        
+        .brand-name {
+            font-family: 'Oswald', sans-serif;
+            color: white;
+            margin: 0;
+            font-size: 1.2rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            line-height: 1.4;
+        }
+
+        .brand-name span {
+            display: block; /* Moves the second half to a new line */
+            font-weight: 300; /* Makes the second line slightly thinner for contrast */
+            font-size: 1rem;
+            opacity: 0.9;
+        }
+        
+        .status-badge {
+            display: inline-block;
+            margin-top: 15px;
+            background-color: var(--grass);
+            color: white;
+            padding: 5px 15px;
+            border-radius: 50px;
+            font-size: 0.8rem;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+        }
     </style>
 </head>
 <body>
@@ -108,8 +139,10 @@
     <header>
         <!-- Ensure the filename matches what you upload to your GitHub folder -->
         <img src="ghata-logo-badge.png" alt="GHATA Logo" class="logo-img">
-        <p>Gainesville & Haymarket Area Tennis Association (GHATA)</p>
-        <p>2026 Summer Season Currently Active</p>
+        <div class="header-text">
+            <h1 class="brand-name">Gainesville & Haymarket Area <span>Tennis Association (GHATA)</span></h1>
+            <div class="status-badge">2026 Summer Season Currently Active</div>
+        </div>
     </header>
 
     <div class="container">
